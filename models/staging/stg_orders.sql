@@ -9,10 +9,12 @@ select
     ordersellingprice,
     ordercostprice,
     -- from raw_customer
+    c.customerid,
     customername,
     segment,
     country,
     -- from raw_product
+    
     category,
     productname,
     subcategorie,
