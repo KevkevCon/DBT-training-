@@ -1,9 +1,10 @@
 select
 -- from raw_orders
+{{ dbt_utils.generate_surrogate_key(['o.orderid', 'c.customerid', 'p.productid']) }} as sk_orders,
 orderid,
 orderdate,
 shipdate,
-shipmode,
+o.shipmode,
 o.ordersellingprice - o.ordercostprice as orderprofit,
 ordersellingprice,
 ordercostprice,
@@ -16,7 +17,7 @@ country,
 p.category,
 p.productname,
 p.subcategorie, 
-{{ markup('ordersellingprice', 'ordercostprice')}} as markup
+{{ markup('ordersellingprice', 'ordercostprice')}} as markup,
 FROM
     {{ ref("raw_orders") }} as o
 LEFT JOIN
@@ -25,5 +26,4 @@ LEFT JOIN
 LEFT JOIN
     {{ ref("raw_product") }} as p 
     ON o.productid = p.productid
-
 
