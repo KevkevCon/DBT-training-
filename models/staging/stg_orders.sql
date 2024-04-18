@@ -15,6 +15,7 @@ segment,
 country,
 -- from raw_product
 p.category,
+p.productid,
 p.productname,
 p.subcategorie, 
 {{ markup('ordersellingprice', 'ordercostprice')}} as markup,
