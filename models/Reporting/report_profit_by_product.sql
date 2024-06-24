@@ -10,3 +10,5 @@ group by
     productname,
     category,
     subcategorie
+
+    --test
