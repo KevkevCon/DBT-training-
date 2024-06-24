@@ -7,3 +7,5 @@
 
 Select * from
 {{ source('globalmart', 'orders') }}
+
+--met tests
