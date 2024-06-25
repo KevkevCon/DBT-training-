@@ -1,11 +1,19 @@
 # Dit is een test workflow voor dbt in github.
-
+# test
 name: test-raw-orders
 
 on:
   push:
     branches:
      -Walkthrough
+     -main
+  pull_request:
+    branches:
+     -Walkthrough
+     -main
+
+  workflow_dispatch:
+
 
 jobs:
     tests:
@@ -23,5 +31,4 @@ jobs:
               run: pip install sqlfmt
 
             - name: run sqlfmt 
-              run: sqlfmt dbt_models/raw --check
-
+              run: sqlfmt models/raw/raw_product.sql
