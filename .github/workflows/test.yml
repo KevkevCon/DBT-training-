@@ -6,6 +6,11 @@ on:
   push:
     branches:
      -Walkthrough
+     -Main
+  pull_request:
+    branches:
+     -Walkthrough
+     -Main
 
 jobs:
     tests:
