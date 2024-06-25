@@ -11,7 +11,9 @@ on:
     branches:
      -Walkthrough
      -Main
+
   workflow_dispatch:
+
 
 jobs:
     tests:
