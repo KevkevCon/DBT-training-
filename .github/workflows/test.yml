@@ -6,11 +6,11 @@ on:
   push:
     branches:
      -Walkthrough
-     -main
+     -Main
   pull_request:
     branches:
      -Walkthrough
-     -main
+     -Main
 
   workflow_dispatch:
 
@@ -31,4 +31,4 @@ jobs:
               run: pip install sqlfmt
 
             - name: run sqlfmt 
-              run: sqlfmt models/raw/raw_product.sql
+              run: sqlfmt dbt_models/raw --check
