@@ -6,3 +6,6 @@
 
 Select * from 
 {{ source('globalmart', 'customer') }}
+
+
+---- hellooo hellooo
