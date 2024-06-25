@@ -12,6 +12,9 @@ on:
      -Walkthrough
      -Main
 
+  workflow_dispatch:
+
+
 jobs:
     tests:
         runs-on: windows-latest
@@ -29,4 +32,3 @@ jobs:
 
             - name: run sqlfmt 
               run: sqlfmt dbt_models/raw --check
-
