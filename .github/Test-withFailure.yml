@@ -1,6 +1,6 @@
 # Dit is een test workflow voor dbt in github.
 # test
-name: test-raw-orders
+name: Test-withfailure
 
 on:
   push:
@@ -24,17 +24,19 @@ jobs:
               uses: actions/setup-python@v2
               with:
                  python-version: '3.9'
-            
-           # - name: Install sqlfmt
-           #   run: pip install sqlfmt
 
-          #  - name: run sqlfmt 
-           #   run: sqlfmt models/raw/raw_product.sql
-          
             - name: Install sqlfluff
               run:  pip install sqlfluff
 
             - name: run sqlfluf 
               run: sqlfluff lint models/* --dialect 
               
-    
+    handle-failure:
+      runs-on: windwos-latest
+      needs: tests
+        if: ${{ 'failure'() }}
+       
+
+        steps:
+            - name: Notify failure
+              run: echo "The dbt-sqlfluf failed"
