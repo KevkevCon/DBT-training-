@@ -6,7 +6,7 @@ on:
     workflow_run:
         workflows: ["test-raw-orders"]
         types:
-            - completed
+         - completed
 
 
 jobs: 
