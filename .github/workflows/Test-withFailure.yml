@@ -32,7 +32,7 @@ jobs:
               run: sqlfluff lint models/* --dialect 
               
     handle-failure:
-      runs-on: windwos-latest
+      runs-on: windows-latest
       needs: tests
       if: ${{ failure() }}
       steps:
