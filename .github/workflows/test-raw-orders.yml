@@ -1,0 +1,38 @@
+# Dit is een test workflow voor dbt in github.
+# test
+name: test-raw-orders
+
+on:
+  push:
+    branches:
+      - Walkthrough
+  pull_request:
+    branches:
+     - Walkthrough
+
+  workflow_dispatch:
+
+
+jobs:
+    tests:
+        runs-on: windows-latest
+
+        steps: 
+            - uses: actions/checkout@v2
+
+            - name: set up pythion in vm
+              uses: actions/setup-python@v2
+              with:
+                 python-version: '3.9'
+            
+           # - name: Install sqlfmt
+           #   run: pip install sqlfmt
+
+          #  - name: run sqlfmt 
+           #   run: sqlfmt models/raw/raw_product.sql
+          
+            - name: Install sqlfluff
+              run:  pip install sqlfluff
+
+            - name: run sqlfluf 
+              run: sqlfluff lint models/* --dialect ansi
