@@ -4,7 +4,7 @@ name: trigger-on-failure
 
 on:
     workflow_run:
-        workflows: ["test"]
+        workflows: ["test-raw-orders"]
         types:
             - completed
 
