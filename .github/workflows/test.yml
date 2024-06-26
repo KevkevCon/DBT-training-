@@ -35,4 +35,4 @@ jobs:
               run:  pip install sqlfluff
 
             - name: run sqlfluf 
-              run: sqlfluff lint models/*.sql --dialect ansi
+              run: sqlfluff lint models/* --dialect ansi
