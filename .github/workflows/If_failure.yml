@@ -1,0 +1,19 @@
+# trigger if test fails
+
+name: trigger-on-failure
+
+on:
+    workflow_run:
+        workflows: ["test"]
+        types:
+            - completed
+
+
+jobs: 
+    handle-failure:
+        if: ${{ github.event.workflow_run.conclusion == 'failure'}}
+        runs-on: windows-latest
+
+        steps:
+            - name: Notify failure
+              run: echo "The dbt-sqlfluf failed"
