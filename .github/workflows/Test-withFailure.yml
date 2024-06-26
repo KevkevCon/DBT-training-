@@ -34,9 +34,7 @@ jobs:
     handle-failure:
       runs-on: windwos-latest
       needs: tests
-        if: ${{ 'failure'() }}
-       
-
-        steps:
-            - name: Notify failure
-              run: echo "The dbt-sqlfluf failed"
+      if: ${{ failure() }}
+      steps:
+       - name: Notify failure
+         run: echo "The dbt-sqlfluf failed"
