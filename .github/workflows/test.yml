@@ -5,12 +5,10 @@ name: test-raw-orders
 on:
   push:
     branches:
-     -Walkthrough
-     -Main
+      - Walkthrough
   pull_request:
     branches:
-     -Walkthrough
-     -Main
+     - Walkthrough
 
   workflow_dispatch:
 
@@ -27,8 +25,14 @@ jobs:
               with:
                  python-version: '3.9'
             
-            - name: Install sqlfmt
-              run: pip install sqlfmt
+           # - name: Install sqlfmt
+           #   run: pip install sqlfmt
 
-            - name: run sqlfmt 
-              run: sqlfmt dbt_models/raw --check
+          #  - name: run sqlfmt 
+           #   run: sqlfmt models/raw/raw_product.sql
+          
+            - name: Install sqlfluff
+              run:  pip install sqlfluff
+
+            - name: run sqlfluf 
+              run: sqlfmt models/raw/*
