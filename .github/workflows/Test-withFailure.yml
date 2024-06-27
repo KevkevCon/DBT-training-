@@ -38,3 +38,8 @@ jobs:
       steps:
        - name: Notify failure
          run: echo "The dbt-sqlfluf failed"
+    
+    Fix-issue:
+      runs-on: windows latest
+      needs: tests
+      if:  ${{ github.event.workflow_run.conclusion == 'succes'}}
