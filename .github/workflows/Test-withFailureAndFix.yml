@@ -50,4 +50,4 @@ jobs:
           run: pip install sqlfluff
 
         - name: fix issues
-          run: sqlfluf fix models/* --dialect ansi 
+          run: sqlfluff fix models/* --dialect ansi 
