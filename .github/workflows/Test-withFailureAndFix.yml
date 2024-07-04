@@ -1,6 +1,11 @@
 # Dit is een test workflow voor dbt in github.
 # test
 name: Test-withfailure and fix
+
+#run name geeft in de workflow list aan dat een actor iets heeft gerund
+run-name: ${{ github.actor }} ran Test-withfailure and fix
+
+
 #trigger on push en pull request bij de walkthrough branch 
 on:
   push:
