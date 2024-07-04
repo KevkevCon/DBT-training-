@@ -50,7 +50,7 @@ jobs:
           run: pip install sqlfluff
 
         - name: fix issues
-          run: sqlfluff fix models/* --dialect ansi 
+          run: sqlfluff fix models/* --dialect snowflake 
           #all kan het niet alle errors fixen gaat het completen.
           # dus de errors die wel gefixed zijn worden goedgekeurd en degene die het niet kan fixen worden gelaten
           # en de job is dan succesfol
