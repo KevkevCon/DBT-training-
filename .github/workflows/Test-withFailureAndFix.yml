@@ -30,7 +30,7 @@ jobs:
               run:  pip install sqlfluff
 
             - name: run sqlfluf 
-              run: sqlfluff lint models/* --dialect ansi
+              run: sqlfluff lint models/* --dialect snowflake
     # tweede job is om issues te fixen als de eerste job failed(failure)
     # Daarna activeert de tweede job door eerst de python op de vm te installeren, slqfluff installeren
     # pip install sqlfluf te runnen, en daarna sqlfluf fix te runnen op alle files in de models folder 
