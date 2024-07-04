@@ -1,0 +1,54 @@
+# Dit is een test workflow voor dbt in github.
+# test
+name: Test-withfailure and fix
+#trigger on push en pull request bij de walkthrough branch 
+on:
+  push:
+    branches:
+     - Walkthrough
+  pull_request:
+    branches:
+     - Walkthrough
+  # Workflow dispatch is een run button om het manually te runnen    
+  workflow_dispatch:
+
+
+jobs:
+    # eerste job is tests
+    tests:
+        runs-on: windows-latest
+
+        steps: 
+            - uses: actions/checkout@v2
+
+            - name: set up pythion in vm
+              uses: actions/setup-python@v2
+              with:
+                 python-version: '3.9'
+
+            - name: Install sqlfluff
+              run:  pip install sqlfluff
+
+            - name: run sqlfluf 
+              run: sqlfluff lint models/* --dialect ansi
+    # tweede job is om issues te fixen als de eerste job failed(failure)
+    # Daarna activeert de tweede job door eerst de python op de vm te installeren, slqfluff installeren
+    # pip install sqlfluf te runnen, en daarna sqlfluf fix te runnen op alle files in de models folder 
+    # met de dialect ansi.               
+    Fix-issue:
+      runs-on: windows-latest
+      needs: tests 
+      if: ${{ failure()}}
+      steps:
+        - uses: actions/checkout@v2
+        - name: Setup py in vm
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.9'
+
+        - name: install sqlfluff linter
+          run: pip install sqlfluff
+
+        - name: fix issues
+          run: sqlfluff fix models/* --dialect ansi 
+    
